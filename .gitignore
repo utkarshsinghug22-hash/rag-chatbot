@@ -1,0 +1,37 @@
+# Security
+.env
+*.env
+
+# Generated FAISS index (too large; rebuild with ingest.py)
+faiss_index/
+
+# PDF documents (users add their own; keeps repo lightweight)
+docs/*.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+rag-env/
+venv/
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs & generated output
+*.log
+feedback_log.csv
+evaluation_results.csv
+evaluation_summary.txt
+eval_output.txt

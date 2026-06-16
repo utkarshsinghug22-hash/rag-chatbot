@@ -1,0 +1,25 @@
+# RAG Chatbot - Requirements
+# All packages verified as of June 2026
+# Install with: pip install -r requirements.txt
+
+# LangChain core + community integrations
+langchain>=0.3.0
+langchain-community>=0.3.0
+langchain-classic>=1.0.0        # RetrievalQA chain
+langchain-groq>=0.2.0          # Groq LLM integration (free tier)
+
+# Vector store - local, no server needed
+faiss-cpu>=1.8.0
+
+# Embeddings - runs locally, no API cost
+sentence-transformers>=3.0.0   # BAAI/bge-base-en-v1.5 model
+langchain-huggingface>=0.0.3   # For HuggingFaceEmbeddings
+
+# PDF loading
+pypdf>=4.0.0                   # Updated from PyPDF2 (deprecated)
+
+# UI + deployment
+streamlit>=1.35.0
+
+# Utilities
+python-dotenv>=1.0.0           # Load .env file locally
