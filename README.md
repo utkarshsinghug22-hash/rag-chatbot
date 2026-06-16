@@ -1,5 +1,9 @@
 # 🔍 RAG Chatbot — Chat with Your Documents
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://rag-chatbot-czaiqcna6dqnnbuappy3wxe.streamlit.app/)
+
+**🚀 Live Demo:** [https://rag-chatbot-czaiqcna6dqnnbuappy3wxe.streamlit.app/](https://rag-chatbot-czaiqcna6dqnnbuappy3wxe.streamlit.app/)
+
 A production-ready Retrieval-Augmented Generation (RAG) chatbot that answers questions over your PDF documents using LangChain, FAISS, and Groq.
 
 ## What Problem Does This Solve?
@@ -132,6 +136,8 @@ rag-chatbot/
    GROQ_API_KEY = "your_actual_key_here"
    ```
 6. Click **Deploy** — your app is live!
+
+**✅ Live app:** [https://rag-chatbot-czaiqcna6dqnnbuappy3wxe.streamlit.app/](https://rag-chatbot-czaiqcna6dqnnbuappy3wxe.streamlit.app/)
 
 > **Note:** You'll need to include the `faiss_index/` folder in your repo for cloud deployment, or modify `app.py` to build the index on startup.
 
