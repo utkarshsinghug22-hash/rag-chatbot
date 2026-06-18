@@ -2,8 +2,8 @@
 .env
 *.env
 
-# Generated FAISS index (too large; rebuild with ingest.py)
-faiss_index/
+# FAISS index is included for Streamlit Cloud deployment
+# faiss_index/
 
 # PDF documents (users add their own; keeps repo lightweight)
 docs/*.pdf
