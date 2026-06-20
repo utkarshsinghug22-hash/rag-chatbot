@@ -27,7 +27,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 
-from rag_pipeline import load_rag_chain, get_answer, EMBEDDING_MODEL
+from rag_pipeline import load_rag_chain, get_answer, get_api_key, EMBEDDING_MODEL
 
 st.set_page_config(
     page_title="RAG Chatbot",
@@ -76,7 +76,7 @@ def build_chain_from_upload(uploaded_files):
     from langchain_classic.chains import RetrievalQA
     from rag_pipeline import RAG_PROMPT, GROQ_MODEL, TEMPERATURE
 
-    api_key = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY", "")
+    api_key = get_api_key()
     llm = ChatGroq(model=GROQ_MODEL, temperature=TEMPERATURE,
                    api_key=api_key, max_tokens=1024)
     chain = RetrievalQA.from_chain_type(

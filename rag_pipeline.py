@@ -10,17 +10,32 @@ Verified (June 2026):
 
 import os
 import warnings
-from dotenv import load_dotenv
+
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass  # python-dotenv not needed on Streamlit Cloud
 
 warnings.filterwarnings("ignore", message=".*langchain-community.*being sunset.*")
 
+import streamlit as st
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_groq import ChatGroq
 from langchain_classic.chains import RetrievalQA
 from langchain_core.prompts import PromptTemplate
 
-load_dotenv()
+
+def get_api_key():
+    """Get API key from environment or Streamlit secrets."""
+    key = os.getenv("GROQ_API_KEY")
+    if not key:
+        try:
+            key = st.secrets.get("GROQ_API_KEY", "")
+        except Exception:
+            key = ""
+    return key if key else None
 
 INDEX_PATH      = "faiss_index"
 EMBEDDING_MODEL = "BAAI/bge-base-en-v1.5"
@@ -52,12 +67,13 @@ Answer:""",
 
 
 def load_rag_chain():
-    api_key = os.getenv("GROQ_API_KEY")
+    api_key = get_api_key()
     if not api_key:
         raise EnvironmentError(
             "GROQ_API_KEY not found.\n"
             "1. Get a free key at https://console.groq.com\n"
-            "2. Copy .env.example to .env and add your key."
+            "2. Copy .env.example to .env and add your key.\n"
+            "3. On Streamlit Cloud: Settings → Secrets → add GROQ_API_KEY"
         )
     if not os.path.exists(INDEX_PATH):
         raise FileNotFoundError(
